@@ -1,10 +1,10 @@
-/* Variabler */
+/******************* Variabler *******************/
 html {
-  --color-page: #f7f7f7;
-  --color-surface: #fff;
-  --color-text: #222;
+  --color-page: #0f1149;
+  --color-surface: #c35734;
+  --color-text: #ffffff;
   --color-muted: #666;
-  --color-border: #d8d8d8;
+  --color-border: #000080;
   --space-05: 0.5rem;
   --space-1: 1rem;
   --space-2: 2rem;
@@ -12,9 +12,19 @@ html {
 
   background: var(--color-page);
   color: var(--color-text);
+
+  overflow-x: hidden; /*** gør at man ikke kan scrolle vandret ***/
+
+  a,
+  button {
+    cursor: pointer;
+  }
+
+  cursor: url(./img/pil/pil.png), auto;
 }
 
-/* Globalt layout */
+/******************* Globalt layout *******************/
+
 body {
   margin: 0;
   min-height: 100svh;
@@ -31,6 +41,7 @@ p {
 }
 
 main {
+  color: var(--color-page);
   display: grid;
   grid-template-columns: inherit;
   grid-column: 1 / -1;
@@ -115,27 +126,40 @@ main > * {
   color: var(--color-muted);
 }
 
-/* Header og footer */
-.site-header,
-.site-footer {
+/******************* Header og footer *******************/
+.site-header {
+  width: 75%;
+  justify-self: center;
+  margin: 2rem 0;
   grid-column: 1 / -1;
-
   display: grid;
-  grid-template-columns: inherit;
+  grid-template-columns: 1fr;
   background: var(--color-surface);
+  opacity: 0.95;
+  border-radius: 1.8rem;
+  position: fixed;
+  z-index: 4;
 }
 
-.header-content,
+.site-footer {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: inherit;
+  display: block;
+}
+
 .footer-content {
   grid-column: 2;
+  background-color: var(--color-page);
 }
 
 .header-content {
   min-height: 4rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: var(--space-1);
+  text-align: center;
 }
 
 .site-logo {
@@ -145,15 +169,16 @@ main > * {
 }
 
 .footer-content {
-  padding-block: var(--space-1);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  padding-block: var(--space-3);
+  display: grid;
+  justify-content: center;
   gap: var(--space-1);
-  color: var(--color-muted);
+  color: var(--color-text);
+  font-size: 0.8rem;
+  text-align: center;
 }
 
-/* Navigation */
+/******************* Navigation *******************/
 [popover] {
   margin: 0;
   padding: 0;
@@ -162,9 +187,10 @@ main > * {
 }
 
 .site-nav button {
-  padding: 0.4rem 0.7rem;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  padding: 0.2rem 1rem;
+  border: 2px var(--color-page);
+  border-radius: 1rem;
+  background: var(--color-page);
   @media (width > 600px) {
     display: none;
   }
@@ -174,31 +200,35 @@ main > * {
   margin: 0;
   padding: var(--space-1);
   list-style: none;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-surface); /*** Farven på popover kassen ***/
+  border: 1px solid var(--color-page); /*** Farven på popover kassens ramme ***/
+  position-area: bottom;
+
   @media (width > 600px) {
+    /**** desktop: altid synlig, vandret i navigationen ****/
+    position: static;
     display: flex;
-    gap: var(--space-1);
+    gap: var(--space-3);
+    margin: 0;
     padding: 0;
     border: none;
     background: none;
-    position: static;
+    overflow: visible;
   }
 }
 
 .menu a {
   display: block;
-  padding: 0.4rem 0;
-  color: inherit;
+  padding: 0.4rem 0.6rem;
+  color: var(--color-page);
   text-decoration: none;
-  border-bottom: 2px solid #0000;
 }
 
 .menu a[aria-current="page"] {
   border-bottom-color: var(--color-border);
 }
 
-/* Flader */
+/******************* Flader *******************/
 .panel,
 .svg-placeholder,
 .form-placeholder,
@@ -225,7 +255,7 @@ main > * {
   padding: var(--space-1);
 }
 
-/* Details */
+/******************* Details *******************/
 .accordion {
   display: grid;
   gap: var(--space-05);
@@ -241,13 +271,213 @@ main > * {
   color: var(--color-muted);
 }
 
-/* Knap/link */
+/******************* Knap/link *******************/
 .button {
   justify-self: start;
   display: inline-block;
-  padding: 0.5rem 0.8rem;
   border: 1px solid var(--color-border);
   background: var(--color-surface);
   color: inherit;
   text-decoration: none;
+}
+
+.cta {
+  .button {
+    justify-self: start;
+    display: inline-block;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: inherit;
+    text-decoration: none;
+    width: 40rem;
+  }
+}
+/******************* Stjernehimlen *******************/
+
+.moving_background {
+  position: fixed; /*** gør at billedet er fastlåst når vi scroller ***/
+  inset: 0; /*** får elementet til atfylde hele siden ud ***/
+  z-index: -1;
+  overflow: hidden; /*** sørger for at skjule det der stikker ud når billedet bevæger sig ***/
+}
+
+.baggrund {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /*** fylder billedet helt ud - er den overflødig?? ***/
+  animation: morph 17s ease-in-out infinite alternate;
+}
+
+/*** Morph-effekten ***/
+@keyframes morph {
+  from {
+    transform: scale(1.15) translate(0, 0); /*** starter her: billede 15% større ***/
+  }
+  to {
+    transform: scale(1.3) translate(-2%, 1.5%); /*** slutter her: gør billede 30% større - lidt til venstre og op ***/
+  }
+}
+
+/*** Haze / tåge-effekten ***/
+
+/* Fælles regler for begge tåge-lag */
+.haze {
+  position: absolute; /*** gør at tågen kommer oven på vores stjenebillede ***/
+  inset: -15%; /*** minus 15 fortæller at den sidder 15% undefor 'parenten' - og gør altså at man ikke ser kanterne ***/
+  mix-blend-mode: screen; /*** blander lyst oven på mørkt, så det ligner glød/tåge ***/
+  filter: blur(20px); /*** gør skyerne bløde, så de ligner tåge ***/
+}
+
+/* Lag 1: blålige skyer.
+   Størrelse - position - farver - og tones ud når den når angivet procent*/
+.haze-1 {
+  background:
+    radial-gradient(40% 35% at 25% 30%, #0f1149, transparent 70%),
+    radial-gradient(35% 40% at 75% 65%, #000080, transparent 80%);
+  animation: drift-1 60s ease-in-out infinite alternate;
+}
+
+/* Lag 2: orange og pink skyer.    
+Samme som haze-1: Størrelse - position - farver - og tones ud når den når angivet procent*/
+.haze-2 {
+  background:
+    radial-gradient(45% 30% at 60% 20%, #b30393, transparent 70%),
+    radial-gradient(20% 20% at 20% 75%, #ff8800, transparent 80%);
+  animation: drift-2 40s ease-in-out infinite alternate;
+}
+
+/* Lagenes bevælgese - de driver modsat af hianden */
+@keyframes drift-1 {
+  from {
+    transform: translate(-6%, -4%) scale(1);
+    opacity: 0.3;
+  }
+  to {
+    transform: translate(6%, 5%) scale(1.2);
+    opacity: 0.4;
+  }
+}
+
+/* Lag 2 driver modsat vej */
+@keyframes drift-2 {
+  from {
+    transform: translate(5%, 4%) scale(1.2);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-5%, -6%) scale(1);
+    opacity: 0.5;
+  }
+}
+
+/******************* Tekst og Fonte *******************/
+
+h1 {
+  font-family: "Audiowide", sans-serif;
+  font-weight: 200;
+  font-size: 1.6rem;
+  color: var(--color-page);
+}
+
+button {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+h2 {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 200;
+  font-size: 3rem;
+  font-style: normal;
+  color: var(--color-text);
+  margin: var(--space-1);
+}
+
+h3 {
+  font-family: "Asta Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin: var(--space-1);
+}
+
+p {
+  font-family: "Asta Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+a {
+  font-family: "Libre Barcode 39 Text", system-ui;
+  font-weight: 400;
+  color: var(--color-page);
+  font-style: normal;
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+/******************* Hero *******************/
+
+.hero {
+  position: relative;
+  min-height: 80svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.hero-mars {
+  position: absolute;
+  width: 1px;
+  scale: 0.2;
+  transition: scale 6s ease-in;
+}
+
+.hero-text {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  transition: opacity 1.5s;
+}
+
+.hero.started .hero-mars {
+  scale: 400;
+}
+
+.hero.started .hero-text {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/******************* Countdown *******************/
+
+.countdown {
+  margin-top: 2.5rem;
+  grid-column: 1 / -1; /* baggrunden går helt ud i kanten */
+  display: grid;
+  grid-template-columns: subgrid; /* arver forælderens kolonner */
+  background-color: color-mix(
+    var(--color-page) 50%,
+    transparent
+  ); /*** color-mix gør at vi kan give det transperente lag på samme tid som farven.. så behøver vi ikke at kode baggrund og tekst i hver deres div***/
+}
+
+.countdown-content {
+  grid-column: 1 /-1; /* gør at indholdet bliver i midterkolonnen */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+
+.countdown h3 {
+  margin-top: 0.5rem;
+  color: var(--color-text);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }

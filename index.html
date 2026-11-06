@@ -1,37 +1,173 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eventnavn</title>
+  <meta name="robots" content="noindex">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Turret+Road:wght@200;300;400;500;700;800&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Audiowide&family=Turret+Road:wght@200;300;400;500;700;800&display=swap"
+    rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap" rel="stylesheet">
+
+
+  <link rel="icon" href="./img/favicon/favicon.ico" />
+
+  <title>Transmission: Mars</title>
   <link rel="stylesheet" href="./starter.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+
+  <!-- Vi ligger baggrunden i hele body'en så den er konstant på hele indexet. Også når vi scroller ned. -->
+  <div class="moving_background">
+    <img class="baggrund" src="./img/Stjernehimmel_index.webp" alt="">
+    <!-- Giver to lag "tåge" over img. Der er ikke noget indhold - laget styles i css -->
+    <div class="haze haze-1"></div>
+    <div class="haze haze-2"></div>
+  </div>
+
+
   <header class="site-header">
     <div class="header-content">
-      <a class="site-logo" href="./">Eventnavn</a>
+      <a href="./index.html">
+        <h1>Transmission: Mars</h1>
+      </a>
       <nav class="site-nav">
-        <button>Menu</button>
-        <ul class="menu" id="menu" popover>
-          <li><a href="./" aria-current="page">Forside</a></li>
-          <li><a href="./svg.html">Interaktiv SVG</a></li>
-          <li><a href="./form.html">Formular</a></li>
+        <button type="button" popovertarget="menu" class="button" aria-label="MENU">☰</button>
+        <ul id="menu" class="menu" popover>
+          <li><a href="./svg.html">THE MISSION</a></li>
+          <li><a href="./form.html">SIGN UP</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main></main>
+
+  <main>
+
+    <div class="hero">
+      <img class="hero-mars" src="./img/mars.svg" alt="Mars">
+
+      <div class="hero-text">
+        <h2>YOUR FRONT-ROW SEAT TO HISTORY</h2>
+        <button class="cta" type="button">LETS GO, MARS!</button>
+      </div>
+    </div>
+
+
+
+
+    <section class="countdown">
+      <div class="countdown-content">
+        <div>
+          <h2 id="dage">00</h2>
+          <h3>Days</h3>
+        </div>
+        <div>
+          <h2 id="timer">00</h2>
+          <h3>Hours</h3>
+        </div>
+        <div>
+          <h2 id="minutter">00</h2>
+          <h3>Min</h3>
+        </div>
+        <div>
+          <h2 id="sekunder">00</h2>
+          <h3>Sec</h3>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div>
+      <h2>Transmission: Mars</h2>
+      <p>In 2042, humanity makes history. Follow the first crewed mission to Mars through exclusive live transmissions,
+        crew Q&As and historic moments from launch to landing. Then join us in London as we welcome the crew home and
+        celebrate a journey that brought the world together.
+
+        We went to Mars together. Now, we meet on Earth.
+
+        Sign up and be part of history.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <article class="card">
+      <div class="card-content flow">
+        <h2>01 — The M42 Rocket</h2>
+        <h3>MISSION TECHNOLOGY · ROCKET SYSTEMS</h3>
+        <button class="btn" popovertarget="program-details">
+          READ MORE
+        </button>
+      </div>
+
+      <div class="program-details" id="program-details" popover>
+        <img src="./" alt="The M42 Rocket">
+        <div class="program-content flow">
+          <h2>01 — The M42 Rocket</h2>
+          <h3>MISSION TECHNOLOGY · ROCKET SYSTEMS</h3>
+          <p>The Rocket M42 is the centrepiece of humanity’s most ambitious space mission to date. Designed for
+            long-duration spaceflight, its advanced propulsion systems are built to carry the crew from Earth to Mars
+            and
+            back again.
+            Every component has been engineered for reliability, efficiency and the challenges of deep space. From
+            launch to
+            landing, M42 will serve as both transport and lifeline for the crew.
+            In 2042, the world will watch as the M42 leaves Earth behind — carrying the future of human exploration with
+            it.,</p>
+          <button class="btn" popovertarget="program-details">
+            CLOSE
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <audio id="soundtrack" src="./audio/Mars Soundscape demo 1.mp3" loop preload="auto"></audio>
+
+
+  </main>
+
 
   <footer class="site-footer">
     <div class="footer-content">
-      <p>Eventnavn</p>
-      <p>Footer</p>
+      <p>This event, the M42 rocket and the 2042 Mars mission are fictional elements created for an event concept.
+        Scientific
+        information about Mars is based on real-world research and facts.</p>
+      <p>
+        The concept, ideas and illustrations are entirely original and created by the authors.
+        All text have been generated using OpenAI.
+      </p>
     </div>
   </footer>
+
   <script src="./script.js"></script>
 </body>
 
