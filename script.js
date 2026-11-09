@@ -12,7 +12,7 @@ if (opsamlingPlaceholder) {
 /******************* Hero *******************/
 
 const hero = document.querySelector(".hero");
-const cta = document.querySelector(".cta");
+const cta = document.querySelector(".hero-text .btn");
 const soundtrack = document.querySelector("#soundtrack");
 
 cta.addEventListener("click", () => {
@@ -22,19 +22,20 @@ cta.addEventListener("click", () => {
 
 /******************* Countdown *******************/
 
-// Sæt din måldato her (år-måned-dagTtime:minut:sekund)
 const maal = new Date("2042-01-01T00:00:00").getTime();
 
 function pad(tal) {
-  return String(tal).padStart(2, "0"); // 5 bliver til "05"
+  return String(tal).padStart(2, "0");
 }
+
+let interval; // defineres først
 
 function opdater() {
   const diff = maal - Date.now();
 
   if (diff <= 0) {
     clearInterval(interval);
-    document.getElementById("countdown").textContent = "Tiden er gået!";
+    document.querySelector(".countdown-content").textContent = "Tiden er gået!";
     return;
   }
 
@@ -49,5 +50,31 @@ function opdater() {
   document.getElementById("sekunder").textContent = pad(sekunder);
 }
 
-opdater(); // kør med det samme, så der ikke går 1 sek. før noget vises
-const interval = setInterval(opdater, 1000); // opdater hvert sekund
+opdater();
+interval = setInterval(opdater, 1000);
+
+/******************* SVG *******************/
+
+const svgSpace = document.querySelector(".svg-space");
+
+const launch = document.querySelector("#details-launch");
+const crew = document.querySelector("#details-crew");
+const mars = document.querySelector("#details-mars");
+const exit = document.querySelector("#details-exit");
+const earth = document.querySelector("#details-earth");
+
+launch.addEventListener("toggle", updateSVGPosition);
+crew.addEventListener("toggle", updateSVGPosition);
+mars.addEventListener("toggle", updateSVGPosition);
+exit.addEventListener("toggle", updateSVGPosition);
+earth.addEventListener("toggle", updateSVGPosition);
+
+function updateSVGPosition() {
+  const openDetails = document.querySelector(".accordion-item:open");
+
+  if (openDetails) {
+    svgSpace.dataset.position = openDetails.dataset.position;
+  } else {
+    delete svgSpace.dataset.position;
+  }
+}

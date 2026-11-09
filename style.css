@@ -3,8 +3,9 @@ html {
   --color-page: #0f1149;
   --color-surface: #c35734;
   --color-text: #ffffff;
-  --color-muted: #666;
+  --color-accent: #b30393;
   --color-border: #000080;
+  --color-muted: #928f8f;
   --space-05: 0.5rem;
   --space-1: 1rem;
   --space-2: 2rem;
@@ -275,22 +276,35 @@ main > * {
 .button {
   justify-self: start;
   display: inline-block;
-  border: 1px solid var(--color-border);
   background: var(--color-surface);
-  color: inherit;
-  text-decoration: none;
+  color: var(--color-text);
 }
 
 .cta {
   .button {
     justify-self: start;
     display: inline-block;
-    border: 1px solid var(--color-border);
+    border: 2px solid var(--color-border);
     background: var(--color-surface);
-    color: inherit;
+    color: var(--color-text);
     text-decoration: none;
-    width: 40rem;
   }
+}
+
+.btn {
+  background: transparent;
+  color: var(--color-text);
+  border: 2px solid var(--color-accent);
+  border-radius: 2rem;
+  width: 16rem;
+  padding: 0.7rem 1rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: var(--color-accent);
+  color: var(--color-text);
 }
 /******************* Stjernehimlen *******************/
 
@@ -422,7 +436,8 @@ a {
 
 .hero {
   position: relative;
-  min-height: 80svh;
+  min-height: 100vh; /* vh = viewport height. 100vh betyder 100% af skærmens højde */
+  width: 100%;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -435,6 +450,16 @@ a {
   width: 1px;
   scale: 0.2;
   transition: scale 6s ease-in;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
 }
 
 .hero-text {
@@ -457,9 +482,9 @@ a {
 /******************* Countdown *******************/
 
 .countdown {
-  margin-top: 2.5rem;
-  grid-column: 1 / -1; /* baggrunden går helt ud i kanten */
+  grid-column: 1 / -1; /* baggrunden går helt ud i kanten - full bleed opgavekrav*/
   display: grid;
+  padding: 10rem;
   grid-template-columns: subgrid; /* arver forælderens kolonner */
   background-color: color-mix(
     var(--color-page) 50%,
@@ -472,6 +497,15 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   text-align: center;
+  justify-content: center;
+}
+
+.countdown h2 {
+  font-weight: 200;
+  font-size: 4.2rem;
+  @media (width > 800px) {
+    font-size: 8rem;
+  }
 }
 
 .countdown h3 {
@@ -480,4 +514,74 @@ a {
   font-weight: 300;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  @media (width > 800px) {
+    font-size: 3rem;
+  }
+}
+
+/******************* Modal Popover-elementer - STYLING *******************/
+.program-details {
+  background: var(--color-page);
+  border: 2px solid var(--color-surface);
+  border-radius: 1.5rem;
+  width: 40rem;
+  max-width: 85%;
+  max-height: 40rem;
+  overflow-y: auto; /** gør modalen scrollbar **/
+  margin: auto; /*** centrerer vores popover ***/
+}
+
+.program-details img {
+  display: block;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain; /** så hele billedet kan ses**/
+}
+
+.program-content {
+  padding: 2rem; /** gir lidt luft til kanten**/
+}
+
+.program-content h2 {
+  font-size: 2rem; /** tilpasser h2'ers størrelse i modalvinduet **/
+  margin: 0; /** forstår ikke hvorfor den skal være 0, men det gør at den står på linje med h3'eren **/
+}
+
+.program-content h3 {
+  margin: 0.5rem 0 1rem;
+  letter-spacing: 0.15em;
+}
+
+.program-content p {
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.program-details::backdrop {
+  backdrop-filter: blur(10px); /* styre at baggrunden bag popover blir sløret */
+}
+
+/******************* Artikel Sektion *******************/
+
+/******************* SVG *******************/
+
+.rocket {
+  transition: 0.5s;
+  translate: var(--x) var(--y);
+}
+
+.svg-space[data-position="launch"] .rocket {
+  --x: -25%;
+  --y: 0%;
+}
+.svg-space[data-position="crew-qa"] .rocket {
+  --x: -75%;
+  --y: 0%;
+}
+
+.svg-space[data-position="mars-landing"] .rocket {
+}
+.svg-space[data-position="exit-mars"] .rocket {
+}
+.svg-space[data-position="earth-landing"] .rocket {
 }
