@@ -51,11 +51,8 @@ h1 {
   font-weight: 400;
   font-style: normal;
   text-align: center;
-  margin-top: -45rem;
+  margin-top: -43rem;
   font-size: 65px;
-}
-
-.mars {
 }
 
 main {
@@ -210,6 +207,7 @@ main > * {
   list-style: none;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
+  position-area: bottom span-left;
   @media (width > 600px) {
     display: flex;
     gap: var(--space-1);
