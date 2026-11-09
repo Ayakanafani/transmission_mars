@@ -1,65 +1,110 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interaktiv SVG | Eventnavn</title>
+  <meta name="robots" content="noindex">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Turret+Road:wght@200;300;400;500;700;800&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Audiowide&family=Turret+Road:wght@200;300;400;500;700;800&display=swap"
+    rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap" rel="stylesheet">
+
+
+  <link rel="icon" href="./img/favicon/favicon.ico" />
+
+  <title>Transmission: Mars</title>
   <link rel="stylesheet" href="./starter.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+
+  <!-- Vi ligger baggrunden i hele body'en så den er konstant på hele indexet. Også når vi scroller ned. -->
+  <div class="moving_background">
+    <img class="baggrund" src="./img/Stjernehimmel_index.webp" alt="">
+    <!-- Giver to lag "tåge" over img. Der er ikke noget indhold - laget styles i css -->
+    <div class="haze haze-1"></div>
+    <div class="haze haze-2"></div>
+  </div>
+
+
   <header class="site-header">
     <div class="header-content">
-      <a class="site-logo" href="./">Eventnavn</a>
+      <a href="./index.html">
+        <h1>Transmission: Mars</h1>
+      </a>
       <nav class="site-nav">
-        <button>Menu</button>
-        <ul class="menu" id="menu" popover>
-          <li><a href="./">Forside</a></li>
-          <li><a href="./svg.html" aria-current="page">Interaktiv SVG</a></li>
-          <li><a href="./form.html">Formular</a></li>
+        <button type="button" popovertarget="menu" class="button" aria-label="MENU">☰</button>
+        <ul id="menu" class="menu" popover>
+          <li><a href="./svg.html">THE MISSION</a></li>
+          <li><a href="./form.html">SIGN UP</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
   <main>
     <section class="svg-page">
-      <header class="svg-intro">
+      <!-- <header class="svg-intro">
         <h1>Interaktiv SVG</h1>
         <p>Indsæt din egen SVG og forbind den med punkterne nedenfor.</p>
-      </header>
+      </header> -->
+
 
       <section class="svg-layout">
-        <div class="svg-placeholder"></div>
+        <div class="svg-placeholder">
+          <svg class="svg-space" viewBox="0 0 1920 1080">
+            <use href="./space.svg#Sky"></use>
+            <use href="./space.svg#Path"></use>
+            <use class="rocket" href="./space.svg#Rocket"></use>
+          </svg>
+        </div>
 
         <article class="panel">
-          <h2>Udforsk eventet</h2>
+          <h2>The Mission Events</h2>
           <div class="accordion">
-            <!-- TODO: Lav om til details/summary -->
-            <div class="accordion-item">
-              <h3>Punkt 1</h3>
-              <p>Beskriv første område, aktivitet eller del af dit event.</p>
-            </div>
-            <div class="accordion-item">
-              <h3>Punkt 2</h3>
-              <p>Beskriv andet område, aktivitet eller del af dit event.</p>
-            </div>
-            <div class="accordion-item">
-              <h3>Punkt 3</h3>
-              <p>Beskriv tredje område, aktivitet eller del af dit event.</p>
-            </div>
+            <details class="accordion-item" name="accordion" data-position="launch" id="details-launch">
+              <summary>Launch</summary>
+              <div>Witness the historic liftoff as humanity begins its journey to Mars.</div>
+            </details>
+            <details class="accordion-item" name="accordion" data-position="crew-qa" id="details-crew">
+              <summary>Exclusive Crew Q&A</summary>
+              <div>Get exclusive insights and ask questions directly to the crew.</div>
+            </details>
+            <details class="accordion-item" name="accordion" data-position="mars-landing" id="details-mars">
+              <summary>Landing on Mars</summary>
+              <div>Experience the historic moment humanity first sets foot on Mars. Live.</div>
+            </details>
+            <details class="accordion-item" name="accordion" data-position="exit-mars" id="details-exit">
+              <summary>Exit Mars</summary>
+              <div>Explore Phobos and Deimos in an exclusive live webinar.</div>
+            </details>
+            <details class="accordion-item" name="accordion" data-position="earth-landing" id="details-earth">
+              <summary>Landing on Earth</summary>
+              <div>Join fellow space enthusiasts in London to celebrate humanity's historic return at an exclusive
+                in-person community event.</div>
+            </details>
           </div>
         </article>
       </section>
     </section>
   </main>
 
+
   <footer class="site-footer">
     <div class="footer-content">
-      <p>Eventnavn</p>
-      <p>Footer</p>
+      <p>This event, the M42 rocket and the 2042 Mars mission are fictional elements created for an event concept.
+        Scientific
+        information about Mars is based on real-world research and facts.</p>
+      <p>
+        The concept, ideas and illustrations are entirely original and created by the author
+        All text have been generated using OpenAI.
+      </p>
     </div>
   </footer>
   <script src="./script.js"></script>

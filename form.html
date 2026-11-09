@@ -1,30 +1,62 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formular | Eventnavn</title>
+  <meta name="robots" content="noindex">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Turret+Road:wght@200;300;400;500;700;800&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Audiowide&family=Turret+Road:wght@200;300;400;500;700;800&display=swap"
+    rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap" rel="stylesheet">
+
+
+  <link rel="icon" href="./img/favicon/favicon.ico" />
+
+  <title>Transmission: Mars</title>
   <link rel="stylesheet" href="./starter.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+
+  <!-- Vi ligger baggrunden i hele body'en så den er konstant på hele indexet. Også når vi scroller ned. -->
+  <div class="moving_background">
+    <img class="baggrund" src="./img/Stjernehimmel_index.webp" alt="">
+    <!-- Giver to lag "tåge" over img. Der er ikke noget indhold - laget styles i css -->
+    <div class="haze haze-1"></div>
+    <div class="haze haze-2"></div>
+  </div>
+
+
   <header class="site-header">
     <div class="header-content">
-      <a class="site-logo" href="./">Eventnavn</a>
+      <a href="./index.html">
+        <h1>Transmission: Mars</h1>
+      </a>
       <nav class="site-nav">
-        <button>Menu</button>
-        <ul class="menu" id="menu" popover>
-          <li><a href="./">Forside</a></li>
-          <li><a href="./svg.html">Interaktiv SVG</a></li>
-          <li><a href="./form.html" aria-current="page">Formular</a></li>
+        <button type="button" popovertarget="menu" class="button" aria-label="MENU">☰</button>
+        <ul id="menu" class="menu" popover>
+          <li><a href="./svg.html">THE MISSION</a></li>
+          <li><a href="./form.html">SIGN UP</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
   <main>
+
+
+
+
+
+
+
+
     <section class="form-page">
       <header class="form-intro">
         <h1>Formular</h1>
@@ -37,8 +69,13 @@
 
   <footer class="site-footer">
     <div class="footer-content">
-      <p>Eventnavn</p>
-      <p>Footer</p>
+      <p>This event, the M42 rocket and the 2042 Mars mission are fictional elements created for an event concept.
+        Scientific
+        information about Mars is based on real-world research and facts.</p>
+      <p>
+        The concept, ideas and illustrations are entirely original and created by the author
+        All text have been generated using OpenAI.
+      </p>
     </div>
   </footer>
   <script src="./script.js"></script>
