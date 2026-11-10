@@ -73,6 +73,8 @@ main > * {
   display: grid;
   gap: var(--space-2);
   align-items: start;
+  margin-top: 8rem;
+
   @media (width > 800px) {
     grid-template-columns: 1fr min(40%, 36ch);
   }
@@ -80,6 +82,8 @@ main > * {
 
 .form-page {
   display: grid;
+  margin-top: 8rem;
+  color: var(--color-accent);
   gap: var(--space-2);
   @media (width > 600px) {
     grid-template-columns: min(40%, 50ch) 1fr;
@@ -163,10 +167,10 @@ main > * {
   text-align: center;
 }
 
-.site-logo {
-  color: inherit;
-  font-weight: 700;
-  text-decoration: none;
+.logo {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
 
 .footer-content {
@@ -468,6 +472,7 @@ a {
   justify-items: center;
   gap: var(--space-2);
   transition: opacity 1.5s;
+  width: 66%;
 }
 
 .hero.started .hero-mars {
