@@ -5,79 +5,78 @@
   margin: 0;
   padding: 0;
 }
-
 html {
   interpolate-size: allow-keywords;
   font-family: system-ui, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
-
 h1,
 h2 {
   line-height: 1.25;
 }
-
 p,
 li {
   text-wrap: pretty;
 }
-
 img,
 svg {
   display: block;
   width: 100%;
   height: auto;
 }
-
 label {
   display: block;
 }
-
+/* FORMSIDE KNAP */
 input,
 button,
 textarea,
 select {
   font: inherit;
-  color: inherit;
+  color: var(--color-text);
   background-color: transparent;
   font-size: max(1em, 16px);
   padding: 0;
   margin: 0;
+  font-family: "Turret Road", sans-serif;
 }
-
+button {
+  transition-duration: 0.4s;
+  border-radius: 15px;
+}
+button:hover {
+  background-color: var(--color-surface);
+}
+input#name {
+  border-radius: 15px;
+  background-color: var(--color-text);
+}
 input:where([type="checkbox"], [type="radio"]) {
   width: 1em;
   height: 1em;
 }
-
 textarea {
   resize: none;
   min-height: 4lh;
 }
-
 legend {
   padding: 0;
 }
-
 select,
 ::picker(select) {
   appearance: base-select;
 }
-
 [popover] {
   margin: revert;
 }
-
 dialog {
   overscroll-behavior: none;
-
   &::backdrop {
     overflow: hidden;
     overscroll-behavior: contain;
   }
 }
-
 .visually-hidden {
   position: absolute;
   width: 1px;

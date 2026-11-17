@@ -849,9 +849,9 @@ summary {
   color: var(--color-lightblue);
 }
 
-/******************* FORM *******************/
+/******************* FORM - Morten *******************/
 
-.form-page {
+/* .form-page {
   display: grid;
   margin-top: 8rem;
   color: var(--color-page);
@@ -911,6 +911,123 @@ summary {
 
 #yellow-mercury {
   accent-color: #ffd600; /* Gul */
+}
+
+/******************* FORM - Aya *******************/
+
+.form-page {
+  h1 {
+    color: var(--color-text);
+  }
+  p {
+    font-family: "Turret Road", sans-serif;
+  }
+  display: grid;
+  gap: var(--space-2);
+  margin-top: 5rem;
+  @media (width > 600px) {
+    grid-template-columns: min(40%, 50ch) 1fr;
+  }
+}
+.form-placeholder {
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
+  border-color: var(--color-text);
+  min-height: -webkit-fill-available;
+  min-height: stretch;
+  padding: 20px;
+  margin: 20px;
+  font-family: "Turret Road", sans-serif;
+  color: var(--color-text);
+  gap: 12px;
+  @media (width < 600px) {
+  }
+  label,
+  legend {
+    color: var(--color-text);
+    font-family: "Turret Road", sans-serif;
+  }
+}
+/* farver */
+input[type="radio"]:checked {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+input[type="radio"] {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--color-text);
+  border-radius: 99px;
+}
+#grey {
+  background: grey;
+}
+#pink {
+  background: #f3a6f5;
+}
+#green {
+  background: #20a80e;
+}
+#red {
+  background: rgb(187, 0, 0);
+}
+#orange {
+  background: orange;
+}
+#brown {
+  background: #7d4d04;
+}
+#blue {
+  background: #3da2ea;
+}
+#purple {
+  background-color: rgb(85, 0, 128);
+}
+label:checked {
+  outline: 2px solid var(--color-text);
+}
+.form-intro {
+  display: grid;
+  gap: var(--space-1);
+  align-content: start;
+  max-width: 60ch;
+}
+.form-intro p {
+  color: var(--color-text);
+}
+.form-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+hr {
+  margin-block: 20px;
+  border: 0;
+  border-top: 1.5px solid var(--color-accent);
+}
+.submit {
+  padding: 4px;
+  border: solid 1px;
+  border-color: var(--color-accent);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+fieldset {
+  border: none;
+}
+#mission-profile {
+  appearance: none;
+  border-radius: 10px;
+  padding: 2px;
+  border: solid 1px;
+  border-color: var(--color-accent);
+  text-align: center;
+  margin-top: 10px;
+}
+#mission-profile option {
+  background-color: #000080;
 }
 
 /************* Opsamling ***************/
