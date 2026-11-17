@@ -36,9 +36,17 @@
 
   <header class="site-header">
     <div class="header-content">
-      <a href="./index.html">
+      <div class="logo">
+        <a href="index.html">
+          <img src="./img/logo.webp" alt="Transmission: Mars - Logo">
+        </a>
+      </div>
+      <a href="./index.html" class="site-title">
         <h1>Transmission: Mars</h1>
       </a>
+
+      <p class="status" aria-hidden="true">Systems nominal</p>
+
       <nav class="site-nav">
         <button type="button" popovertarget="menu" class="button" aria-label="MENU">☰</button>
         <ul id="menu" class="menu" popover>
@@ -50,11 +58,8 @@
   </header>
   <main>
     <section class="svg-page">
-      <!-- <header class="svg-intro">
-        <h1>Interaktiv SVG</h1>
-        <p>Indsæt din egen SVG og forbind den med punkterne nedenfor.</p>
-      </header> -->
 
+      <h2>The Mission Events</h2>
 
       <section class="svg-layout">
         <div class="svg-placeholder">
@@ -65,8 +70,8 @@
           </svg>
         </div>
 
-        <article class="panel">
-          <h2>The Mission Events</h2>
+        <article class="svg-panel">
+
           <div class="accordion">
             <details class="accordion-item" name="accordion" data-position="launch" id="details-launch">
               <summary>Launch</summary>
@@ -82,6 +87,10 @@
             </details>
             <details class="accordion-item" name="accordion" data-position="exit-mars" id="details-exit">
               <summary>Exit Mars</summary>
+              <div>Follow the historic exit of Mars - the crew will start their travel back to earth.</div>
+            </details>
+            <details class="accordion-item" name="accordion" data-position="mars-moons" id="details-moons">
+              <summary>Moons of Mars</summary>
               <div>Explore Phobos and Deimos in an exclusive live webinar.</div>
             </details>
             <details class="accordion-item" name="accordion" data-position="earth-landing" id="details-earth">
