@@ -10,38 +10,70 @@
 </head>
 
 <body>
+  <!-- Vi ligger baggrunden i hele body'en så den er konstant på hele indexet. Også når vi scroller ned. -->
+  <div class="moving_background">
+    <img class="baggrund" src="./img/Stjernehimmel_index.webp" alt="">
+    <!-- Giver to lag "tåge" over img. Der er ikke noget indhold - laget styles i css -->
+    <div class="haze haze-1"></div>
+    <div class="haze haze-2"></div>
+  </div>
+
+
   <header class="site-header">
     <div class="header-content">
-      <a class="site-logo" href="./">Eventnavn</a>
+      <div class="logo">
+        <a href="index.html">
+          <img src="./img/logo.webp" alt="Transmission: Mars - Logo">
+        </a>
+      </div>
+      <a href="./index.html" class="site-title">
+        <h1>Transmission: Mars</h1>
+      </a>
+
+      <p class="status" aria-hidden="true">Systems nominal</p>
+
       <nav class="site-nav">
-        <button>Menu</button>
-        <ul class="menu" id="menu" popover>
-          <li><a href="./">Forside</a></li>
-          <li><a href="./svg.html">Interaktiv SVG</a></li>
-          <li><a href="./form.html" aria-current="page">Formular</a></li>
+        <button type="button" popovertarget="menu" class="button" aria-label="MENU">☰</button>
+        <ul id="menu" class="menu" popover>
+          <li><a href="./svg.html">THE MISSION</a></li>
+          <li><a href="./form.html">SIGN UP</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="opsamling-page">
-      <div class="opsamling-intro">
-        <h1>Opsamling</h1>
-        <p>Vis brugerens valg som et pass, en invitation eller noget andet, der passer til dit event.</p>
-        <div class="actions">
-          <a class="button" href="./form.html">Tilbage til formular</a>
-        </div>
+
+    <section class="pass-page">
+
+
+      <div class="pass-intro">
+
+        <h1>en overskrift her</h1>
+
+
       </div>
 
-      <article class="opsamling-placeholder"></article>
+
+
+
+      <div class="pass-stage">
+
+        <p>her kommer passet til at stå</p>
+      </div>
+
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-content">
-      <p>Eventnavn</p>
-      <p>Footer</p>
+      <p>This event, the M42 rocket and the 2042 Mars mission are fictional elements created for an event concept.
+        Scientific
+        information about Mars is based on real-world research and facts.</p>
+      <p>
+        The concept, ideas and illustrations are entirely original and created by the authors.
+        All text have been generated using OpenAI.
+      </p>
     </div>
   </footer>
   <script src="./script.js"></script>

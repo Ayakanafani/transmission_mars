@@ -36,9 +36,17 @@
 
   <header class="site-header">
     <div class="header-content">
-      <a href="./index.html">
+      <div class="logo">
+        <a href="index.html">
+          <img src="./img/logo.webp" alt="Transmission: Mars - Logo">
+        </a>
+      </div>
+      <a href="./index.html" class="site-title">
         <h1>Transmission: Mars</h1>
       </a>
+
+      <p class="status" aria-hidden="true">Systems nominal</p>
+
       <nav class="site-nav">
         <button type="button" popovertarget="menu" class="button" aria-label="MENU">☰</button>
         <ul id="menu" class="menu" popover>
@@ -48,23 +56,112 @@
       </nav>
     </div>
   </header>
+
   <main>
-
-
-
-
-
-
-
-
     <section class="form-page">
       <header class="form-intro">
-        <h1>Formular</h1>
-        <p>Lav en formular, der sender brugeren videre til opsamlingssiden.</p>
+        <h1>Personal Eventpass</h1>
+        <p>Create your own personalized profile to get access to exclusive content, follow big events
+          and interact with other space-nerds!</p>
       </header>
 
-      <form class="form-placeholder" action="./opsamling.html"></form>
+      <section>
+        <!-- Indsæt navn -->
+        <form class="form-placeholder" action="./opsamling.html">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+          </div>
+          <hr>
+          <!-- Indsæt Mission profile dropdown
+menu: SELECT -->
+
+          <label for=" mission-profile">Mission Profile</label>
+          <select id="mission-profile" name="profile">
+            <option value="">Choose</option>
+            <option value="commander">Commander</option>
+            <option value="mission-specialist">Mission Specialist</option>
+            <option value="pilot">Pilot</option>
+            <option value="astronaut">Astronaut</option>
+            <option value="capcom">CAPCOM</option>
+          </select>
+
+          <hr> <!-- CHECKBOX -->
+          <div class=" form-group">
+            <label for="interests">
+              <legend>What are your interests?</legend>
+              <div>
+                <input type="checkbox" id="interests" name="guidelines" value="accepted">
+                Rocket science
+              </div>
+              <div>
+                <input type="checkbox" id="interests" name="guidelines" value="accepted">
+                Astro physics
+              </div>
+              <div>
+                <input type="checkbox" id="interests" name="guidelines" value="accepted">
+                Solar systems
+              </div>
+              <div>
+                <input type="checkbox" id="interests" name="guidelines" value="accepted">
+                Quantum physics
+              </div>
+              <div>
+                <input type="checkbox" id="interests" name="guidelines" value="accepted">
+                Black holes
+              </div>
+            </label>
+          </div>
+          <hr>
+          <!-- Radio FARVER -->
+          <div class=" form-group">
+            <fieldset class="radiocolors">
+              <legend>Choose your favorite color</legend>
+              <label for="grey">
+                <input type="radio" id="grey" name="reason" value="grey">
+                Grey
+              </label>
+              <label for="pink">
+                <input type="radio" id="pink" name="reason" value="pink">
+                Pink
+              </label>
+              <label for="green">
+                <input type="radio" id="green" name="reason" value="green">
+                Green
+              </label>
+              <label for="red">
+                <input type="radio" id="red" name="reason" value="red">
+                Red
+              </label>
+              <label for="orange">
+                <input type="radio" id="orange" name="reason" value="orange">
+                Orange
+              </label>
+              <label for="brown">
+                <input type="radio" id="brown" name="reason" value="brown">
+                Brown
+              </label>
+              <label for="blue">
+                <input type="radio" id="blue" name="reason" value="blue">
+                Blue
+              </label>
+              <label for="purple">
+                <input type="radio" id="purple" name="reason" value="purple">
+                Purple
+              </label>
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <button class="submit" type="submit">Submit </button>
+          </div>
+
+        </form>
+      </section>
+
     </section>
+
+
   </main>
 
   <footer class="site-footer">

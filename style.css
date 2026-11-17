@@ -5,7 +5,14 @@ html {
   --color-text: #ffffff;
   --color-accent: #b30393;
   --color-border: #000080;
-  --color-muted: #928f8f;
+  --color-lightblue: #9fb0ff;
+  --colour-gradient: linear-gradient(
+    160deg,
+    #0b0d2e 0%,
+    #1a1040 55%,
+    #2b0f3a 100%
+  );
+  --color-muted: #ffffff33;
   --space-05: 0.5rem;
   --space-1: 1rem;
   --space-2: 2rem;
@@ -54,49 +61,6 @@ main > * {
   padding-block: var(--space-3);
 }
 
-.svg-page {
-  display: grid;
-  gap: var(--space-2);
-}
-
-.svg-intro {
-  display: grid;
-  gap: var(--space-1);
-  max-width: 60ch;
-}
-
-.svg-intro p {
-  color: var(--color-muted);
-}
-
-.svg-layout {
-  display: grid;
-  gap: var(--space-2);
-  align-items: start;
-  @media (width > 800px) {
-    grid-template-columns: 1fr min(40%, 36ch);
-  }
-}
-
-.form-page {
-  display: grid;
-  gap: var(--space-2);
-  @media (width > 600px) {
-    grid-template-columns: min(40%, 50ch) 1fr;
-  }
-}
-
-.form-intro {
-  display: grid;
-  gap: var(--space-1);
-  align-content: start;
-  max-width: 60ch;
-}
-
-.form-intro p {
-  color: var(--color-muted);
-}
-
 .opsamling-page {
   display: grid;
   gap: var(--space-2);
@@ -127,20 +91,7 @@ main > * {
   color: var(--color-muted);
 }
 
-/******************* Header og footer *******************/
-.site-header {
-  width: 75%;
-  justify-self: center;
-  margin: 2rem 0;
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1fr;
-  background: var(--color-surface);
-  opacity: 0.95;
-  border-radius: 1.8rem;
-  position: fixed;
-  z-index: 4;
-}
+/******************* Footer *******************/
 
 .site-footer {
   grid-column: 1 / -1;
@@ -154,21 +105,6 @@ main > * {
   background-color: var(--color-page);
 }
 
-.header-content {
-  min-height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-1);
-  text-align: center;
-}
-
-.site-logo {
-  color: inherit;
-  font-weight: 700;
-  text-decoration: none;
-}
-
 .footer-content {
   padding-block: var(--space-3);
   display: grid;
@@ -180,18 +116,83 @@ main > * {
 }
 
 /******************* Navigation *******************/
-[popover] {
+
+.site-header {
+  position: absolute;
+  width: 90%;
+  justify-self: center;
+  margin: 2rem 0;
+  grid-column: 1 / -1;
+  display: grid;
+  z-index: 4;
+}
+
+.header-content {
+  min-height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 25px rgba(140, 160, 255, 0.5));
+}
+
+/* statuslinje med blinkende lampe */
+.status {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
   margin: 0;
-  padding: 0;
-  border: none;
-  background: transparent;
+  font-size: 0.7rem;
+  letter-spacing: 0.2rem;
+  color: var(--color-lightblue);
+}
+
+.status::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #5dffb0;
+  box-shadow: 0 0 8px #5dffb0;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status::before {
+    animation: none;
+  }
+}
+
+@media (width > 800px) {
+  .status {
+    display: flex;
+  }
 }
 
 .site-nav button {
   padding: 0.2rem 1rem;
   border: 2px var(--color-page);
   border-radius: 1rem;
-  background: var(--color-page);
+  background: var(--colour-gradient);
   @media (width > 600px) {
     display: none;
   }
@@ -199,42 +200,56 @@ main > * {
 
 .menu {
   margin: 0;
-  padding: var(--space-1);
+  padding: var(--space-2);
   list-style: none;
-  background: var(--color-surface); /*** Farven på popover kassen ***/
-  border: 1px solid var(--color-page); /*** Farven på popover kassens ramme ***/
-  position-area: bottom;
+  display: none;
+
+  /*** mobil: centreret popup på 70% ***/
+  &:popover-open {
+    display: grid;
+    gap: var(--space-1);
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: 70%;
+    height: fit-content;
+    background: var(--colour-gradient);
+    border: 1px solid var(--color-lightblue);
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 120px var(--color-muted);
+  }
+
+  /*** blur på baggrunden */
+  &::backdrop {
+    background: rgba(3, 4, 20, 0.5);
+    backdrop-filter: blur(6px);
+  }
 
   @media (width > 600px) {
     /**** desktop: altid synlig, vandret i navigationen ****/
     position: static;
     display: flex;
     gap: var(--space-3);
-    margin: 0;
     padding: 0;
-    border: none;
     background: none;
-    overflow: visible;
+    border: none;
+    box-shadow: none;
   }
 }
 
-.menu a {
-  display: block;
-  padding: 0.4rem 0.6rem;
-  color: var(--color-page);
-  text-decoration: none;
+.site-nav a:hover {
+  color: var(--color-lightblue);
 }
 
-.menu a[aria-current="page"] {
-  border-bottom-color: var(--color-border);
+.site-title h1:hover {
+  color: var(--color-lightblue);
 }
 
 /******************* Flader *******************/
 .panel,
-.svg-placeholder,
-.form-placeholder,
 .opsamling-placeholder {
-  background: var(--color-surface);
+  background: var(--color-page);
   border: 1px solid var(--color-border);
 }
 
@@ -244,32 +259,9 @@ main > * {
   gap: var(--space-1);
 }
 
-.svg-placeholder,
 .opsamling-placeholder {
   min-height: -webkit-fill-available;
   min-height: stretch;
-}
-
-.form-placeholder {
-  min-height: -webkit-fill-available;
-  min-height: stretch;
-  padding: var(--space-1);
-}
-
-/******************* Details *******************/
-.accordion {
-  display: grid;
-  gap: var(--space-05);
-}
-
-.accordion-item {
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-}
-
-.accordion-item p {
-  padding: 0 var(--space-1) var(--space-1);
-  color: var(--color-muted);
 }
 
 /******************* Knap/link *******************/
@@ -390,7 +382,7 @@ h1 {
   font-family: "Audiowide", sans-serif;
   font-weight: 200;
   font-size: 1.6rem;
-  color: var(--color-page);
+  color: var(--color-text);
 }
 
 button {
@@ -424,11 +416,11 @@ p {
 }
 
 a {
-  font-family: "Libre Barcode 39 Text", system-ui;
+  font-family: "Asta Sans", sans-serif;
   font-weight: 400;
-  color: var(--color-page);
+  color: var(--color-text);
   font-style: normal;
-  font-size: 2rem;
+  font-size: 1rem;
   text-decoration: none;
 }
 
@@ -443,6 +435,10 @@ a {
   overflow: hidden;
   text-align: center;
   color: var(--color-text);
+}
+
+.hero h2 {
+  font-size: 3.2rem;
 }
 
 .hero-mars {
@@ -466,8 +462,9 @@ a {
   position: relative;
   display: grid;
   justify-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
   transition: opacity 1.5s;
+  width: 60%;
 }
 
 .hero.started .hero-mars {
@@ -519,69 +516,531 @@ a {
   }
 }
 
-/******************* Modal Popover-elementer - STYLING *******************/
-.program-details {
-  background: var(--color-page);
-  border: 2px solid var(--color-surface);
-  border-radius: 1.5rem;
-  width: 40rem;
-  max-width: 85%;
-  max-height: 40rem;
-  overflow-y: auto; /** gør modalen scrollbar **/
+/******************* Article Section - Runde Bokse *******************/
+
+.article-section {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 50px;
+  margin: 5rem 0;
+}
+
+@media (max-width: 800px) {
+  .article-section {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .article-section .card1,
+  .article-section .card2,
+  .article-section .card3 {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: center;
+  }
+}
+
+.card {
+  background-color: var(--color-surface);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column; /*** giver rækkefølgen overskrift, undertitel og knap */
+  align-items: center; /*** sætter flot i midten **/
+  justify-content: center; /*** sætter flot i midten **/
+  text-align: center; /*** sætter flot i midten **/
+  padding: 3rem;
+}
+
+.card h2 {
+  font-size: 2rem;
+}
+
+.article-section .btn {
+  border: 2px solid var(--color-accent);
+  border-radius: 999px;
+  padding: 0.5em 1.5em;
+  box-shadow: 0 0 120px var(--color-muted);
+}
+
+.article-section .btn:hover {
+  color: var(--color-text);
+  background-color: var(--color-accent);
+  box-shadow: 0 0 120px var(--color-muted);
+}
+
+.card1 {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 2rem;
+}
+
+.card2 {
+  grid-column: 4;
+  grid-row: 2;
+  margin: 2rem;
+}
+
+.card3 {
+  grid-column: 2;
+  grid-row: 3;
+  margin: 2rem;
+}
+
+.card {
+  animation: drift 14s ease-in-out infinite both;
+  box-shadow: 0 0 45px var(--color-page) (255, 255, 255, 0.08);
+}
+
+/* .card:hover {
+  /* animation-play-state: paused; */
+/* }
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(4px, -10px) rotate(1.4deg);
+  }
+  66% {
+    transform: translate(-5px, -7px) rotate(-0.9deg);
+  }
+} */
+
+/******************* Animations / card1, card2, card3 *******************/
+
+@keyframes scale {
+  from {
+    scale: 100%;
+  }
+  50% {
+    scale: 120%;
+  }
+  100% {
+    scale: 80%;
+  }
+}
+
+.card1 {
+  inset-block-start: 1vh;
+  animation: scale 4s ease;
+  transform-origin: 0 70%;
+  animation-timeline: view();
+
+  animation-fill-mode: both;
+}
+
+.card2 {
+  inset-block-start: 1vh;
+  animation: scale 4s ease;
+  transform-origin: 0 70%;
+  animation-timeline: view();
+
+  animation-fill-mode: both;
+}
+
+.card3 {
+  inset-block-start: 1vh;
+  animation: scale 4s ease;
+  transform-origin: 0 70%;
+  animation-timeline: view();
+
+  animation-fill-mode: both;
+}
+
+/******************* Modal / popover *******************/
+
+.modal-popover {
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto; /** gør modalvinduet scrollbar **/
   margin: auto; /*** centrerer vores popover ***/
+  border: 1px solid var(--color-lightblue);
+  border-radius: 20px;
+  color: var(--color-text);
+  text-align: left; /**** så teksten står pænt fra venstre mod højre i dens grid ****/
+  background: var(--colour-gradient);
+  box-shadow: 0 0 120px var(--color-muted);
 }
 
-.program-details img {
-  display: block;
-  max-width: 300px;
+.modal-popover:popover-open {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/*** det her giver backdrop effekt til modalen så sitet bagved gøres "mørkere" ***/
+.modal-popover::backdrop {
+  background: rgba(3, 4, 20, 0.75);
+  backdrop-filter: blur(6px);
+}
+
+.modal-popover img {
+  width: 100%;
   height: auto;
-  object-fit: contain; /** så hele billedet kan ses**/
+  max-height: 60vh;
+  object-fit: contain;
+  filter: drop-shadow(0 0 25px rgba(140, 160, 255, 0.5));
 }
 
-.program-content {
-  padding: 2rem; /** gir lidt luft til kanten**/
+.modal-content h2 {
+  font-size: 2rem;
 }
 
-.program-content h2 {
-  font-size: 2rem; /** tilpasser h2'ers størrelse i modalvinduet **/
-  margin: 0; /** forstår ikke hvorfor den skal være 0, men det gør at den står på linje med h3'eren **/
+.modal-content h3 {
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: var(--color-lightblue);
+  margin-bottom: 1.2rem;
 }
 
-.program-content h3 {
-  margin: 0.5rem 0 1rem;
-  letter-spacing: 0.15em;
-}
-
-.program-content p {
+.modal-content p {
+  font-size: 0.95rem;
   line-height: 1.5;
-  margin-bottom: 2rem;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
 }
 
-.program-details::backdrop {
-  backdrop-filter: blur(10px); /* styre at baggrunden bag popover blir sløret */
+/**** blød animation ind ****/
+.modal-popover {
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
-/******************* Artikel Sektion *******************/
+.modal-popover::backdrop {
+  transition: opacity 0.4s ease;
+}
 
-/******************* SVG *******************/
+@starting-style {
+  .modal-popover:popover-open {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
 
-.rocket {
-  transition: 0.5s;
-  translate: var(--x) var(--y);
+  .modal-popover:popover-open::backdrop {
+    opacity: 0;
+  }
+}
+
+/*** mobil styling: billedet ligger over tekst ***/
+@media (max-width: 800px) {
+  .modal-popover:popover-open {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .modal-popover img {
+    max-height: 30vh;
+  }
+}
+
+/******************* SVG - bevæger sig på linje - lært af Mikkel i undervisning *******************/
+
+/* .rocket {
+  transition: translate 4s ease-in-out;
+  translate: var(--x, 0px) var(--y, 0px);
 }
 
 .svg-space[data-position="launch"] .rocket {
-  --x: -25%;
-  --y: 0%;
+  --x: 0px;
+  --y: 0px;
 }
 .svg-space[data-position="crew-qa"] .rocket {
-  --x: -75%;
-  --y: 0%;
+  --x: -137px;
+  --y: -245px;
 }
-
 .svg-space[data-position="mars-landing"] .rocket {
+  --x: 738px;
+  --y: -598px;
 }
 .svg-space[data-position="exit-mars"] .rocket {
+  --x: 931px;
+  --y: -572px;
+}
+.svg-space[data-position="mars-moons"] .rocket {
+  --x: 798px;
+  --y: -163px;
 }
 .svg-space[data-position="earth-landing"] .rocket {
+  --x: 108px;
+  --y: 95px;
+} */
+
+/******************* SVG - bevæger sig på kurven - fået AI til at udregne alle punkter på kurven *******************/
+
+/****  Hvis den skal virke skal alt CSS oven over været udkommenteret! AI-bottens udregning bruger ikke CSS ***/
+
+/******************* SVG-site *******************/
+
+.svg-page {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.svg-page h2 {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.svg-intro {
+  display: grid;
+  gap: var(--space-1);
+  max-width: 70ch;
+}
+
+.svg-intro p {
+  color: var(--color-text);
+}
+
+.svg-layout {
+  display: grid;
+  gap: var(--space-2);
+  align-items: start;
+  filter: drop-shadow(0 0 25px rgba(140, 160, 255, 0.5));
+
+  @media (width > 800px) {
+    grid-template-columns: 1fr min(40%, 36ch);
+  }
+}
+
+.svg-placeholder {
+  border: 2px solid var(--color-page);
+}
+
+.accordion {
+  display: grid;
+  gap: var(--space-05);
+}
+
+.accordion-item {
+  background: var(--colour-gradient);
+  opacity: 70%;
+  border: 1px solid rgba(159, 176, 255, 0.25);
+  border-radius: 0.6rem;
+  box-shadow:
+    0 0 40px rgba(120, 140, 255, 0.25),
+    0 0 120px rgba(120, 140, 255, 0.15);
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.accordion-item:hover {
+  transform: translateX(6px);
+  background-color: var(--color-accent);
+  opacity: 90%;
+  cursor: pointer;
+}
+
+summary {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-style: normal;
+  text-transform: uppercase;
+  margin: var(--space-1);
+  color: var(--color-lightblue);
+}
+
+/******************* FORM - Morten *******************/
+
+/* .form-page {
+  display: grid;
+  margin-top: 8rem;
+  color: var(--color-page);
+  gap: var(--space-2);
+  @media (width > 600px) {
+    grid-template-columns: min(40%, 50ch) 1fr;
+  }
+}
+
+.form-intro {
+  display: grid;
+  gap: var(--space-1);
+  align-content: start;
+  max-width: 60ch;
+}
+
+.form-placeholder {
+  background: var(--color-page);
+  border: 1px solid var(--color-border);
+}
+
+.form-placeholder {
+  min-height: -webkit-fill-available;
+  min-height: stretch;
+  padding: var(--space-1);
+  color: var(--color-text);
+}
+
+.form-page h1 {
+  font-family: "Audiowide", sans-serif;
+  font-weight: 200;
+  font-size: 1.6rem;
+  color: var(--color-text);
+}
+
+.form-page h2 {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 200;
+  font-size: 1.4rem;
+  font-style: normal;
+  color: var(--color-text);
+}
+
+.form-page p {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 200;
+  font-size: 1.4rem;
+  font-style: normal;
+  color: var(--color-text);
+}
+
+.legend {
+  border-color: var(--color-accent);
+}
+
+/** radio buttons **/
+
+#yellow-mercury {
+  accent-color: #ffd600; /* Gul */
+}
+
+/******************* FORM - Aya *******************/
+
+.form-page {
+  h1 {
+    color: var(--color-text);
+  }
+  p {
+    font-family: "Turret Road", sans-serif;
+  }
+  display: grid;
+  gap: var(--space-2);
+  margin-top: 5rem;
+  @media (width > 600px) {
+    grid-template-columns: min(40%, 50ch) 1fr;
+  }
+}
+.form-placeholder {
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
+  border-color: var(--color-text);
+  min-height: -webkit-fill-available;
+  min-height: stretch;
+  padding: 20px;
+  margin: 20px;
+  font-family: "Turret Road", sans-serif;
+  color: var(--color-text);
+  gap: 12px;
+  @media (width < 600px) {
+  }
+  label,
+  legend {
+    color: var(--color-text);
+    font-family: "Turret Road", sans-serif;
+  }
+}
+/* farver */
+input[type="radio"]:checked {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+input[type="radio"] {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--color-text);
+  border-radius: 99px;
+}
+#grey {
+  background: grey;
+}
+#pink {
+  background: #f3a6f5;
+}
+#green {
+  background: #20a80e;
+}
+#red {
+  background: rgb(187, 0, 0);
+}
+#orange {
+  background: orange;
+}
+#brown {
+  background: #7d4d04;
+}
+#blue {
+  background: #3da2ea;
+}
+#purple {
+  background-color: rgb(85, 0, 128);
+}
+label:checked {
+  outline: 2px solid var(--color-text);
+}
+.form-intro {
+  display: grid;
+  gap: var(--space-1);
+  align-content: start;
+  max-width: 60ch;
+}
+.form-intro p {
+  color: var(--color-text);
+}
+.form-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+hr {
+  margin-block: 20px;
+  border: 0;
+  border-top: 1.5px solid var(--color-accent);
+}
+.submit {
+  padding: 4px;
+  border: solid 1px;
+  border-color: var(--color-accent);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+fieldset {
+  border: none;
+}
+#mission-profile {
+  appearance: none;
+  border-radius: 10px;
+  padding: 2px;
+  border: solid 1px;
+  border-color: var(--color-accent);
+  text-align: center;
+  margin-top: 10px;
+}
+#mission-profile option {
+  background-color: #000080;
+}
+
+/************* Opsamling ***************/
+
+.pass-page {
+  width: 75vw;
+  min-height: 50vh;
+  border: 1px solid var(--color-lightblue);
+  border-radius: 20px;
+  background: var(--colour-gradient);
+  box-shadow: 0 0 120px var(--color-muted);
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+  margin-top: 10rem;
 }
