@@ -928,6 +928,7 @@ summary {
   @media (width > 600px) {
     grid-template-columns: min(40%, 50ch) 1fr;
   }
+  cursor: url(./img/pil/pil.png), auto;
 }
 .form-placeholder {
   background: var(--color-border);
@@ -941,12 +942,15 @@ summary {
   font-family: "Turret Road", sans-serif;
   color: var(--color-text);
   gap: 12px;
+
   @media (width < 600px) {
   }
   label,
   legend {
     color: var(--color-text);
     font-family: "Turret Road", sans-serif;
+
+    cursor: url(./img/pil/pil.png), auto;
   }
 }
 /* farver */
@@ -960,6 +964,17 @@ input[type="radio"] {
   border: 1px solid var(--color-text);
   border-radius: 99px;
 }
+
+input#name {
+  border: solid 2px;
+  border-color: var(--color-accent);
+  border-radius: 10px;
+}
+
+input[type="radio"]:hover {
+  cursor: pointer;
+}
+
 #grey {
   background: grey;
 }
@@ -1001,10 +1016,11 @@ label:checked {
   margin-bottom: 20px;
   gap: 20px;
 }
+
 hr {
   margin-block: 20px;
   border: 0;
-  border-top: 1.5px solid var(--color-accent);
+  border-top: 1.2px solid var(--color-accent);
 }
 .submit {
   padding: 4px;
@@ -1017,6 +1033,10 @@ hr {
 fieldset {
   border: none;
 }
+input[type="checkbox" i]:hover {
+  cursor: pointer;
+}
+
 #mission-profile {
   appearance: none;
   border-radius: 10px;
@@ -1025,9 +1045,42 @@ fieldset {
   border-color: var(--color-accent);
   text-align: center;
   margin-top: 10px;
+
+  cursor: url(./img/pil/pil.png), auto;
 }
+
 #mission-profile option {
   background-color: #000080;
+
+  p {
+    font-family: "Asta Sans", sans-serif;
+  }
+}
+
+#mission-profile:hover {
+  cursor: pointer;
+}
+
+.form-placeholder2 {
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
+  border-color: var(--color-text);
+
+  padding: 20px;
+  margin-top: 20px;
+
+  color: var(--color-text);
+  gap: 12px;
+
+  @media (width < 600px) {
+    cursor: url(./img/pil/pil.png), auto;
+  }
+
+  h3 {
+    font-family: "Turret Road", sans-serif;
+    font-size: 1.1rem;
+  }
 }
 
 /************* Opsamling ***************/
@@ -1043,4 +1096,108 @@ fieldset {
   grid-template-columns: 1fr 1.4fr;
   gap: 2rem;
   margin-top: 10rem;
+}
+
+.pass-stage * {
+  box-sizing: border-box;
+}
+.pass-stage {
+  width: 34vw;
+  min-height: 80vh;
+  border: 1px solid;
+  border-radius: 20px;
+  background-image: linear-gradient(to top, #ba28bf, #f7bcf9);
+  box-shadow: 0 0 120px var(--color-muted);
+}
+
+.pass-stage[data-color="red"] {
+  background-image: linear-gradient(to top, #831f10, #ff2929);
+}
+.pass-stage[data-color="green"] {
+  background-image: linear-gradient(to top, #32d4d4, #074949);
+}
+
+.planetcrew-overskrift {
+  text-align: center;
+  font-family: "Audiowide", sans-serif;
+  font-size: 30px;
+  margin-bottom: -22px;
+  margin-top: 40px;
+}
+
+.venus {
+  width: 130px;
+  float: right;
+  margin-right: 10px;
+}
+
+.event-pass {
+  border: 3px dashed;
+  border-radius: 20px;
+  width: 27vw;
+  height: 60vh;
+  margin-left: 46px;
+  margin-top: 55px;
+}
+
+.event-pass h2 {
+  margin-top: 30px;
+  font-family: "Audiowide", sans-serif;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.event-pass h3 {
+  font-family: "Turred Road";
+}
+
+.mission_og_navn {
+  h3 {
+    font-family: "Turret Road";
+    text-align: center;
+  }
+}
+.event-pass img.stjerner-lille {
+  width: 56px !important;
+  height: auto !important;
+  display: inline-block !important;
+  transform: translateY(-120px);
+  margin-left: 10px;
+}
+
+.event-pass img.stjerner-stor {
+  width: 100px !important;
+  height: auto !important;
+  display: inline-block !important;
+  margin-left: 200px;
+  transform: translateY(-60px);
+  position: absolute;
+}
+
+.event-pass img.raket {
+  position: absolute;
+  width: 240px !important;
+  height: auto !important;
+  transform: translateX(20px);
+  margin-top: -60px;
+}
+
+.special_interests {
+  text-align: center;
+  h2 {
+    font-size: 1.5rem;
+    font-family: "Turret Road";
+    font-weight: 500;
+    margin-top: 100px;
+  }
+  p {
+    font-size: 1.2rem;
+    font-family: "Turret Road";
+  }
+}
+
+.name-output {
+  z-index: 100;
+  font-family: "Turret Road";
+  text-align: center;
 }

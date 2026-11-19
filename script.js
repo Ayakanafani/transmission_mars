@@ -297,4 +297,30 @@ function toggleTheme() {
   html.classList.toggle("dark");
 }
 
-btn.addEventListener("click", toggleTheme);
+btn?.addEventListener("click", toggleTheme);
+
+/******************* FORM og FORMULAR *******************/
+const eventPass = document.querySelector(".pass-stage");
+
+if (eventPass) {
+  const params = new URLSearchParams(location.search);
+
+  const nameOutput = document.querySelector(".name-output");
+  const planetcrewOverskrift = document.querySelector(".planetcrew-overskrift");
+  const planetSrc = document.querySelector(".venus");
+
+  const name = params.get("name");
+  const color = params.get("color");
+
+  // const nameOutput = eventPass.querySelector(".name-output");
+  nameOutput.textContent = name;
+
+  if (color === "red") {
+    planetcrewOverskrift.textContent = "Magnificent";
+    planetSrc.src = "./Planter/jupiter/Jupiter png/Aktiv 1.png";
+  } else if (color === "green") {
+    planetcrewOverskrift.textContent = "Epic";
+  }
+
+  eventPass.dataset.color = color;
+}
