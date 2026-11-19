@@ -73,10 +73,9 @@
             <input type="text" id="name" name="name">
           </div>
           <hr>
-          <!-- Indsæt Mission profile dropdown
-menu: SELECT -->
+          <!-- Indsæt Mission profile dropdown-menu: SELECT -->
 
-          <label for=" mission-profile">Mission Profile</label>
+          <label for="mission-profile">Mission Profile</label>
           <select id="mission-profile" name="profile">
             <option value="">Choose</option>
             <option value="commander">Commander</option>
@@ -86,70 +85,78 @@ menu: SELECT -->
             <option value="capcom">CAPCOM</option>
           </select>
 
-          <hr> <!-- CHECKBOX -->
-          <div class=" form-group">
-            <label for="interests">
+          <hr> <!-- CHECKBOX, lavet som øvelse 13-->
+          <div class="form-group">
+            <fieldset>
               <legend>What are your interests?</legend>
-              <div>
-                <input type="checkbox" id="interests" name="guidelines" value="accepted">
+              <label for="rocket-science">
+                <input id="rocket-science" name="interest" type="checkbox" value="Rocket science">
                 Rocket science
-              </div>
-              <div>
-                <input type="checkbox" id="interests" name="guidelines" value="accepted">
+              </label>
+              <label for="astro-physics">
+                <input id="astro-physics" name="interest" type="checkbox" value="Astro physics">
                 Astro physics
-              </div>
-              <div>
-                <input type="checkbox" id="interests" name="guidelines" value="accepted">
+              </label>
+              <label for="solar-systems">
+                <input id="solar-systems" name="interest" type="checkbox" value="Solar systems">
                 Solar systems
-              </div>
-              <div>
-                <input type="checkbox" id="interests" name="guidelines" value="accepted">
+              </label>
+              <label for="quantum-physics">
+                <input id="quantum-physics" name="interest" type="checkbox" value="Quantum physics">
                 Quantum physics
-              </div>
-              <div>
-                <input type="checkbox" id="interests" name="guidelines" value="accepted">
+              </label>
+              <label for="black-holes">
+                <input id="black-holes" name="interest" type="checkbox" value="Black holes">
                 Black holes
-              </div>
-            </label>
+              </label>
+            </fieldset>
           </div>
           <hr>
+
           <!-- Radio FARVER -->
           <div class=" form-group">
             <fieldset class="radiocolors">
               <legend>Choose your favorite color</legend>
               <label for="grey">
-                <input type="radio" id="grey" name="reason" value="grey">
+                <input type="radio" id="grey" name="color" value="grey" required>
                 Grey
               </label>
               <label for="pink">
-                <input type="radio" id="pink" name="reason" value="pink">
+                <input type="radio" id="pink" name="color" value="pink" required>
                 Pink
               </label>
               <label for="green">
-                <input type="radio" id="green" name="reason" value="green">
+                <input type="radio" id="green" name="color" value="green" required>
                 Green
               </label>
               <label for="red">
-                <input type="radio" id="red" name="reason" value="red">
+                <input type="radio" id="red" name="color" value="red" required>
                 Red
               </label>
               <label for="orange">
-                <input type="radio" id="orange" name="reason" value="orange">
+                <input type="radio" id="orange" name="color" value="orange" required>
                 Orange
               </label>
               <label for="brown">
-                <input type="radio" id="brown" name="reason" value="brown">
+                <input type="radio" id="brown" name="color" value="brown" required>
                 Brown
               </label>
               <label for="blue">
-                <input type="radio" id="blue" name="reason" value="blue">
+                <input type="radio" id="blue" name="color" value="blue" required>
                 Blue
               </label>
               <label for="purple">
-                <input type="radio" id="purple" name="reason" value="purple">
+                <input type="radio" id="purple" name="color" value="purple" required>
                 Purple
               </label>
             </fieldset>
+          </div>
+
+          <div class="form-group">
+            <fieldset class="radiocolors">
+              <!-- legend og radioknapper -->
+            </fieldset>
+            <p class="error-message" id="color-error">Choose a color</p>
           </div>
 
           <div class="form-group">

@@ -290,11 +290,81 @@ if (svgSpace && rocket) {
 
 /**********  Light-mode / Dark-mode **************/
 
-const html = document.querySelector("html");
-const btn = document.querySelector("#theme-btn");
+// const html = document.querySelector("html");
+// const btn = document.querySelector("#theme-btn");
 
-function toggleTheme() {
-  html.classList.toggle("dark");
+// function toggleTheme() {
+//   html.classList.toggle("dark");
+// }
+
+// btn.addEventListener("click", toggleTheme);
+
+/******************* OPSAMLING *******************/
+
+const form = document.querySelector(".form-placeholder");
+
+if (form) {
+  function cancelPopup(event) {
+    // Forhindr browserens valideringsboble
+    event.preventDefault();
+    form.querySelector(":invalid").focus();
+  }
+
+  form.addEventListener("invalid", cancelPopup, true);
 }
 
-btn.addEventListener("click", toggleTheme);
+const eventPass = document.querySelector(".pass-stage");
+
+//vi opretter faste grupper til hvert crew, med gruppe-navn og planet
+const groups = {
+  grey: { group: "Magic Mercury Crew", planet: "./img/planeter/mercury.webp" },
+  pink: { group: "Vibrant Venus Crew", planet: "./img/venus.png" },
+  green: { group: "Epic Earth Crew", planet: "./img/planeter/earth.webp" },
+  red: { group: "Magnificent Mars Crew", planet: "./img/mars.png" },
+  orange: {
+    group: "Jubilant Jupiter Crew",
+    planet: "./img/jupiter.png",
+  },
+  brown: { group: "Supreme Saturn Crew", planet: "./img/planeter/saturn.webp" },
+  blue: { group: "Unique Uranus Crew", planet: "./img/planeter/uranus.webp" },
+  purple: {
+    group: "Noble Neptune Crew",
+    planet: "./img/planeter/jupiter.webp",
+  },
+};
+
+if (eventPass) {
+  const nameOutput = document.querySelector(".name-output");
+  const profileOutput = document.querySelector(".mission-profile-output");
+  const groupOutput = document.querySelector(".group-output");
+  const planetOutput = document.querySelector(".planet-output");
+  const checkOne = document.querySelector(".check-one");
+  const checkTwo = document.querySelector(".check-two");
+  const checkThree = document.querySelector(".check-three");
+  const checkFour = document.querySelector(".check-four");
+  const checkFive = document.querySelector(".check-five");
+
+  const params = new URLSearchParams(location.search);
+
+  // Hent name  med params.get()
+  const name = params.get("name");
+  const profile = params.get("profile");
+  const interests = params.getAll("interest");
+  const color = params.get("color");
+
+  // Vis værdi med textContent
+  nameOutput.textContent = name;
+  profileOutput.textContent = profile;
+  checkOne.textContent = interests[0] || "No interests selected";
+  checkTwo.textContent = interests[1] || "";
+  checkThree.textContent = interests[2] || "";
+  checkFour.textContent = interests[3] || "";
+  checkFive.textContent = interests[4] || "";
+
+  if (color) {
+    eventPass.dataset.color = color;
+    groupOutput.textContent = groups[color].group;
+    planetOutput.src = groups[color].planet;
+    planetOutput.alt = groups[color].group;
+  }
+}

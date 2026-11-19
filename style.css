@@ -1,3 +1,8 @@
+/******************* Global transition *******************/
+@view-transition {
+  navigation: auto;
+}
+
 /******************* Variabler *******************/
 html {
   --color-page: #0f1149;
@@ -909,10 +914,6 @@ summary {
 
 /** radio buttons **/
 
-#yellow-mercury {
-  accent-color: #ffd600; /* Gul */
-}
-
 /******************* FORM - Aya *******************/
 
 .form-page {
@@ -1030,17 +1031,159 @@ fieldset {
   background-color: #000080;
 }
 
-/************* Opsamling ***************/
+/******************* Opsamling ********************/
 
-.pass-page {
-  width: 75vw;
-  min-height: 50vh;
-  border: 1px solid var(--color-lightblue);
-  border-radius: 20px;
-  background: var(--colour-gradient);
-  box-shadow: 0 0 120px var(--color-muted);
+.pass-page h2 {
+  text-align: center;
+  margin-top: 6rem;
+  perspective: 1200px;
+}
+
+/** vores grunddesign for pass-stage */
+.pass-stage {
+  position: relative;
+  background: linear-gradient(180deg, var(--pass-light), var(--pass-dark));
+  border-radius: 30px;
+  margin: 2rem auto 0; /** 2rem i toppen, auto centrere indholdet, 0 margin i bund **/
+  min-height: 60vh;
+  width: min(90%, 500px);
+  aspect-ratio: 3 / 4;
+  padding: 1.5rem;
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 2rem;
-  margin-top: 10rem;
+  box-shadow: 50px 40px 80px rgba(89, 89, 89, 0.698);
+  transform: rotateY(-15deg) rotateX(5deg) rotate(-2deg);
+  transition: transform 0.5s ease;
+}
+
+/**** pass stage sætter sig i "lige position" når man køre cursor ind over" ******/
+.pass-stage:hover {
+  transform: rotateY(0deg) rotateX(0deg) rotate(0deg);
+}
+
+/*  Titlen og planet ligger oven på kortet */
+.group-output {
+  position: absolute;
+  top: 4%;
+  left: 6%;
+  max-width: 60%;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.planet-output {
+  position: absolute;
+  top: 8%;
+  right: -8%;
+  width: 45%;
+  height: auto;
+  z-index: 2;
+}
+
+.planet-output {
+  animation: orbit 10s linear infinite;
+  filter: drop-shadow(0 0 25px var(--pass-light));
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(4px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(4px) rotate(-360deg);
+  }
+}
+
+/*  pink-stiplede ramme ***/
+.pass-stage-content {
+  border: 3px dashed var(--color-accent);
+  border-radius: 30px;
+  margin-top: 18%; /* gør plads til titel og planet over rammen. TAK CHAT */
+  padding: 2rem 1.5rem;
+  display: grid;
+  grid-template-rows: auto 1fr; /* øverst er missionprofile og navn.. nederst er special interrests */
+}
+
+.pass-stage h2 {
+  margin: 0;
+}
+
+/*  Profil og navn: centreret øverst  */
+.mission-profile-output {
+  font-size: 1.2rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.name-output {
+  font-size: 1.6rem;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+}
+
+/**** Intereser nederst til venstre ***/
+.interests-block {
+  align-self: end; /* skubber blokken ned i bunden af rammen */
+  justify-self: start;
+}
+
+.interests-block h1 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.interests-block h2 {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0;
+  text-align: start;
+}
+
+.pass-stage[data-color="grey"] {
+  --pass-light: #e5e5e5;
+  --pass-dark: #272727;
+}
+.pass-stage[data-color="pink"] {
+  --pass-light: #ff9ee9;
+  --pass-dark: #ba28bf;
+}
+.pass-stage[data-color="green"] {
+  --pass-light: #75de5e;
+  --pass-dark: #193700;
+}
+.pass-stage[data-color="red"] {
+  --pass-light: #ff2929;
+  --pass-dark: #831f10;
+}
+.pass-stage[data-color="orange"] {
+  --pass-light: #e98d04;
+  --pass-dark: #a72714;
+}
+.pass-stage[data-color="brown"] {
+  --pass-light: #b6694d;
+  --pass-dark: #4a270d;
+}
+.pass-stage[data-color="blue"] {
+  --pass-light: #0000b9;
+  --pass-dark: #000042;
+}
+.pass-stage[data-color="purple"] {
+  --pass-light: #922bff;
+  --pass-dark: #280b46;
+}
+
+.planet-output {
+  position: absolute;
+  top: 8%;
+  right: -8%;
+  width: 45%;
+  height: auto;
+}
+
+.group-output {
+  position: absolute;
+  top: 4%;
+  left: 6%;
 }
