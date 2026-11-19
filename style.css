@@ -402,7 +402,9 @@ h2 {
   font-size: 3rem;
   font-style: normal;
   color: var(--color-text);
-  margin: var(--space-1);
+  /* margin: var(--space-1); */
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-1);
 }
 
 h3 {
@@ -410,7 +412,7 @@ h3 {
   font-weight: 600;
   font-size: 1.2rem;
   color: var(--color-text);
-  margin: var(--space-1);
+  /* margin: var(--space-1); */
 }
 
 p {
@@ -994,7 +996,14 @@ label:checked {
   align-content: start;
   max-width: 60ch;
 }
+
+.form-intro h2 {
+  font-size: 1.6rem;
+}
 .form-intro p {
+  font-family: "Asta Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
   color: var(--color-text);
 }
 .form-group {
@@ -1027,8 +1036,18 @@ fieldset {
   text-align: center;
   margin-top: 10px;
 }
+
+#mission-profile:hover {
+  background-color: var(--color-accent);
+  cursor: pointer;
+}
+
 #mission-profile option {
   background-color: #000080;
+}
+
+.form-placeholder .submit:hover {
+  background-color: var(--color-accent);
 }
 
 /******************* Opsamling ********************/
@@ -1037,6 +1056,16 @@ fieldset {
   text-align: center;
   margin-top: 6rem;
   perspective: 1200px;
+}
+
+.pass-page h3 {
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: var(--color-lightblue);
+  margin-bottom: 1.2rem;
+  text-align: center;
 }
 
 /** vores grunddesign for pass-stage */
@@ -1065,10 +1094,11 @@ fieldset {
   position: absolute;
   top: 4%;
   left: 6%;
-  max-width: 60%;
-  font-size: 1.6rem;
+  max-width: 80%;
+  font-size: 1.8rem;
   text-transform: uppercase;
   z-index: 2;
+  text-shadow: 1px 2px 4px var(--color-page);
 }
 
 .planet-output {
@@ -1087,10 +1117,10 @@ fieldset {
 
 @keyframes orbit {
   from {
-    transform: rotate(0deg) translateX(4px) rotate(0deg);
+    transform: rotate(0deg) translateX(8px) rotate(0deg);
   }
   to {
-    transform: rotate(360deg) translateX(4px) rotate(-360deg);
+    transform: rotate(360deg) translateX(8px) rotate(-360deg);
   }
 }
 
@@ -1104,23 +1134,21 @@ fieldset {
   grid-template-rows: auto 1fr; /* øverst er missionprofile og navn.. nederst er special interrests */
 }
 
-.pass-stage h2 {
-  margin: 0;
-}
-
 /*  Profil og navn: centreret øverst  */
 .mission-profile-output {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   text-align: center;
   text-transform: uppercase;
   margin: 0;
+  z-index: 4;
+  color: var(--color-text);
+  text-shadow: 1px 2px 4px var(--color-page);
 }
 
-.name-output {
-  font-size: 1.6rem;
-  font-weight: 300;
-  text-align: center;
+.pass-stage h2 {
   margin: 0;
+  text-align: center;
+  font-size: 1.8rem;
 }
 
 /**** Intereser nederst til venstre ***/

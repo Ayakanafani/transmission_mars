@@ -51,6 +51,13 @@ button:hover {
 input#name {
   border-radius: 15px;
   background-color: var(--color-text);
+  border: solid 1.4px var(--color-accent);
+  color: var(--color-page);
+  border-radius: 10px;
+}
+
+input#name:hover {
+  cursor: pointer;
 }
 input:where([type="checkbox"], [type="radio"]) {
   width: 1em;

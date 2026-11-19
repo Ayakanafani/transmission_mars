@@ -317,19 +317,19 @@ const eventPass = document.querySelector(".pass-stage");
 
 //vi opretter faste grupper til hvert crew, med gruppe-navn og planet
 const groups = {
-  grey: { group: "Magic Mercury Crew", planet: "./img/planeter/mercury.webp" },
+  grey: { group: "Magic Mercury Crew", planet: "./img/planeter/mercury.png" },
   pink: { group: "Vibrant Venus Crew", planet: "./img/venus.png" },
-  green: { group: "Epic Earth Crew", planet: "./img/planeter/earth.webp" },
+  green: { group: "Mortens Earth Crew", planet: "./img/planeter/earth.png" },
   red: { group: "Magnificent Mars Crew", planet: "./img/mars.png" },
   orange: {
     group: "Jubilant Jupiter Crew",
     planet: "./img/jupiter.png",
   },
-  brown: { group: "Supreme Saturn Crew", planet: "./img/planeter/saturn.webp" },
-  blue: { group: "Unique Uranus Crew", planet: "./img/planeter/uranus.webp" },
+  brown: { group: "Supreme Saturn Crew", planet: "./img/planeter/saturn.png" },
+  blue: { group: "Unique Uranus Crew", planet: "./img/planeter/uranus.png" },
   purple: {
     group: "Noble Neptune Crew",
-    planet: "./img/planeter/jupiter.webp",
+    planet: "./img/planeter/neptune.png",
   },
 };
 
