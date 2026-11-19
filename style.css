@@ -115,9 +115,12 @@ main > * {
   display: grid;
   justify-content: center;
   gap: var(--space-1);
-  color: var(--color-text);
   font-size: 0.8rem;
   text-align: center;
+}
+
+.footer-content p {
+  color: var(--color-lightblue);
 }
 
 /******************* Navigation *******************/
@@ -569,6 +572,7 @@ a {
   border-radius: 999px;
   padding: 0.5em 1.5em;
   box-shadow: 0 0 120px var(--color-muted);
+  margin-top: 1rem;
 }
 
 .article-section .btn:hover {
@@ -837,6 +841,7 @@ a {
     0 0 120px rgba(120, 140, 255, 0.15);
   color: var(--color-text);
   font-size: 1rem;
+  padding-left: 5px;
 }
 
 .accordion-item:hover {
@@ -927,7 +932,7 @@ summary {
   }
   display: grid;
   gap: var(--space-2);
-  margin-top: 5rem;
+
   @media (width > 600px) {
     grid-template-columns: min(40%, 50ch) 1fr;
   }
@@ -940,7 +945,6 @@ summary {
   min-height: -webkit-fill-available;
   min-height: stretch;
   padding: 20px;
-  margin: 20px;
   font-family: "Turret Road", sans-serif;
   color: var(--color-text);
   gap: 12px;
@@ -1048,6 +1052,11 @@ fieldset {
 
 .form-placeholder .submit:hover {
   background-color: var(--color-accent);
+}
+
+.form-h2 {
+  text-align: center;
+  margin-top: 5rem;
 }
 
 /******************* Opsamling ********************/

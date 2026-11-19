@@ -57,23 +57,27 @@
     </div>
   </header>
 
+
   <main>
+
+    <h2 class="form-h2">Personal Eventpass</h2>
+
     <section class="form-page">
       <header class="form-intro">
-        <h1>Personal Eventpass</h1>
         <h2>Choose your identity</h2>
         <p>Pick your name and mission profile to create your very own space explorer identity. Get ready to join our
           journey to Mars alongside fellow participants!</p>
+
+        <hr>
 
         <h2>Show us your interests</h2>
         <p>What makes you a space enthusiast? Select as many interests as you like and let fellow space nerds discover
           what you're passionate about!</p>
 
+        <hr>
         <h2>Choose your planet team</h2>
         <p>What's your favorite color? Pick the one that represents you, and we'll assign you to a special planet team
           based on your choice!</p>
-
-
       </header>
 
       <section>
@@ -81,7 +85,7 @@
         <form class="form-placeholder" action="./opsamling.html">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" required>
           </div>
           <hr>
           <!-- Indsæt Mission profile dropdown-menu: SELECT -->
@@ -161,13 +165,6 @@
                 Purple
               </label>
             </fieldset>
-          </div>
-
-          <div class="form-group">
-            <fieldset class="radiocolors">
-              <!-- legend og radioknapper -->
-            </fieldset>
-            <p class="error-message" id="color-error">Choose a color</p>
           </div>
 
           <div class="form-group">

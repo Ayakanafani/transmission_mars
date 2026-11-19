@@ -319,7 +319,7 @@ const eventPass = document.querySelector(".pass-stage");
 const groups = {
   grey: { group: "Magic Mercury Crew", planet: "./img/planeter/mercury.png" },
   pink: { group: "Vibrant Venus Crew", planet: "./img/venus.png" },
-  green: { group: "Mortens Earth Crew", planet: "./img/planeter/earth.png" },
+  green: { group: "Epic Earth Crew", planet: "./img/planeter/earth.png" },
   red: { group: "Magnificent Mars Crew", planet: "./img/mars.png" },
   orange: {
     group: "Jubilant Jupiter Crew",
